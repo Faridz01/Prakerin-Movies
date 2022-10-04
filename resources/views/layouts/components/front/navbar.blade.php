@@ -28,13 +28,13 @@
                         <li><a href="celebrities.html">CelebritiesList</a></li>
                         <li><a href="top-movies.html">Top Movies</a></li>
                         <li><a href="blog.html">News</a></li>
-                        <li><a href="#">Pages <i class="icofont icofont-simple-down"></i></a>
+                        {{-- <li><a href="#">Pages <i class="icofont icofont-simple-down"></i></a>
                             <ul>
                                 <li><a href="blog-details.html">Blog Details</a></li>
                                 <li><a href="movie-details.html">Movie Details</a></li>
                             </ul>
-                        </li>
-                        <li><a class="theme-btn" href="#"><i class="icofont icofont-ticket"></i> Tickets</a></li>
+                        </li> --}}
+                        {{-- <li><a class="theme-btn" href="#"><i class="icofont icofont-ticket"></i> Tickets</a></li> --}}
                     </ul>
                 </div>
             </div>

@@ -77,3 +77,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('movies', [FrontController::class, 'movies']);
+Route::get('movies/{id}', [FrontController::class, 'singleMovie']);

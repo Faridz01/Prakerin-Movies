@@ -1,40 +1,61 @@
 @extends('layouts.front')
 @section('content')
-<!-- breadcrumb area start -->
-<section class="breadcrumb-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb-area-content">
-                    <h1>Movies Page</h1>
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-area-content">
+                        <h1>Movies Page</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section><!-- breadcrumb area end -->
-<!-- portfolio section start -->
-<section class="portfolio-area pt-60">
-    <div class="container">
-        <div class="row flexbox-center">
-            <div class="col-lg-6 text-center text-lg-left">
-                <div class="section-title">
-                    <h1><i class="icofont icofont-movie"></i> Spotlight This Month</h1>
+    </section><!-- breadcrumb area end -->
+    <!-- portfolio section start -->
+    <section class="portfolio-area pt-60">
+        <div class="container">
+            <div class="row flexbox-center">
+                <div class="col-lg-6 text-center text-lg-left">
+                    <div class="section-title">
+                        <h1><i class="icofont icofont-movie"></i> Spotlight This Month</h1>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <div class="portfolio-menu">
+                        <ul>
+                            <li data-filter="*" class="active">Latest</li>
+                            @foreach ($genres as $genre)
+                                <li data-filter=".{{ $genre->id }}">{{ $genre->kategori }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="portfolio-menu">
-                    <ul>
-                        <li data-filter="*" class="active">Latest</li>
-                        <li data-filter=".soon">Comming Soon</li>
-                        <li data-filter=".top">Top Rated</li>
-                        <li data-filter=".released">Recently Released</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="row portfolio-item">
-            <div class="col-lg-3 col-md-4 col-sm-6 soon released">
+            <hr />
+            <div class="row portfolio-item">
+                @foreach ($movies as $movie)
+                    <div class="col-lg-3 col-sm-6 {{ $movie->genre_film->id }}">
+                        <a href="/movies/{{ $movie->id }}">
+                            <div class="single-portfolio">
+                                <div class="single-portfolio-img">
+                                    <img src="{{ $movie->image() }}"
+                                        style="width: 265px; height: 425px; object-fit:cover; object-position:center"
+                                        alt="portfolio" />
+                                </div>
+                                <div class="portfolio-content">
+                                    <h2>{{ $movie->judul_film }}</h2>
+                                    <div class="">
+                                        <h4>{{ $movie->tahun_rilis->tahun_rilis . ' | ' . $movie->genre_film->kategori }}
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+
+                {{-- <div class="col-lg-3 col-md-4 col-sm-6 soon released">
                 <div class="single-portfolio">
                     <div class="single-portfolio-img">
                         <img src="{{ asset('front/img/portfolio/portfolio1.png') }}" alt="portfolio" />
@@ -217,76 +238,75 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
             </div>
         </div>
-    </div>
-</section><!-- portfolio section end -->
-<!-- video section start -->
-<section class="video ptb-90">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title pb-20">
-                    <h1><i class="icofont icofont-film"></i> Trailers & Videos</h1>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-md-12">
-                <div class="video-slider mt-20">
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video2.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video3.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video4.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video5.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video2.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video3.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video4.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
-                    </div>
-                    <div class="video-area">
-                        <img src="{{ asset('front/img/video/video5.png') }}" alt="video" />
-                        <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
-                            <i class="icofont icofont-ui-play"></i>
-                        </a>
+    </section><!-- portfolio section end -->
+    <!-- video section start -->
+    <section class="video ptb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title pb-20">
+                        <h1><i class="icofont icofont-film"></i> Trailers & Videos</h1>
                     </div>
                 </div>
             </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="video-slider mt-20">
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video2.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video3.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video4.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video5.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video2.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video3.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video4.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-area">
+                            <img src="{{ asset('front/img/video/video5.png') }}" alt="video" />
+                            <a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+                                <i class="icofont icofont-ui-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section><!-- video section end -->
-
+    </section><!-- video section end -->
 @endsection
