@@ -345,6 +345,23 @@
 		<script src="{{ asset('front/js/isotope.pkgd.min.js') }}"></script>
 		<!-- main JS -->
 		<script src="{{ asset('front/js/main.js') }}"></script>
+        @yield('scripts')
+    <!--Start of Tawk.to Script-->
+    {{-- <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/633cda1837898912e96cea8d/1geir7u3m';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script--> --}}   
+        @include('sweetalert::alert')
 	</body>
 
 </html>
