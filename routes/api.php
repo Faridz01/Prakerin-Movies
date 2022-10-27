@@ -22,3 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('movies', [MovieController::class, 'allmovie']);
 Route::get('movies/{id}', [MovieController::class, 'singleMovie']);
+
+Route::group(['prefix' => 'v1'], function(){
+    Route::post('login', 'UsersController@login');
+    Route::post('register', 'UsersController@register');
+    Route::get('logout', 'UsersController@logout')->middleware('auth:api');
+   });
